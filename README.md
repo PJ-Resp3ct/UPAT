@@ -1,6 +1,10 @@
 # UPAT
 UPAT (Ultimate Password Awareness Toolkit) is a toolkit to assess passwords strength through local attacks, you can run dictionary attacks, brute-force/mask attacks, analyze wordlists or create new ones, and generate strong passwords. 
 
+Disclaimer
+This tool is developed for academic purposes only, in an effort to promote situational awareness. The tool shall not be used without proper authorization from the organization/individuals under testing. We hold no responsibility for any misuse of the tool.
+ 
+Usage
 A user-friendly interface allows to run through all steps and display the tools results.
 
 Pre-requisites:
@@ -36,8 +40,7 @@ Now you are good to go.
 
 ----
 Author: Pierre Jourdan
-UPAT has been developed in the context of the Master's project in CyberSecurity proposed by UCLan Cyprus, under the supervision of Dr Eliana Stavrou.
-
+UPAT has been developed in the context of the Master's thesis project while studying towards the MSc Cybersecurity degree at UCLan Cyprus, under the supervision of Dr Eliana Stavrou.
 
 
 Feel free to contribute.
@@ -54,3 +57,5 @@ An indicative roadmap for future improvements:
 -	A tool measuring password strength would be good to add or even implementing a local algorithm
 
 -	The ability to run distributed attacks taking advantage of multiple computers processing units to optimize cracking time. A server/client tool exists named Hashtopussy and allows to run distributed Hashcat jobs.
+
+- a script to install automatically all pre-requisites would be nice.
