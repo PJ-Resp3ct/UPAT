@@ -10,16 +10,17 @@ Usage
 A user-friendly interface allows to run through all steps and display the tools results.
 
 Pre-requisites:
-- Hashcat >= 3.50
-- John the Ripper Bleeding Jumbo Edition
-- Hashcat-Utils >= 1.7
-- PACK >= 0.0.4
 - CeWL >=5.2
 - Crunch >= 3.6
 - DyMerge >= 0.2
-- Wyd >= 0.2
+- Hash Buster >= 1.0
+- Hashcat >= 3.50
+- Hashcat-Utils >= 1.7
+- John the Ripper Bleeding Jumbo Edition
+- PACK >= 0.0.4
 - PassTrust >= 2.1
 - Pipal >= 3.1
+- Wyd >= 0.2
 
 Tested environments:
 - Ubuntu 16.04 LTS
