@@ -1291,13 +1291,13 @@ def Btn_NewPass_Click(Txt_NewPass_Len,Chk_NewPass_Specials):
     
     w.Btn_NewPass_Run.configure(state=NORMAL)
     
-def Btn_Cfg_Abrase_Click():
-    print('home_support.Btn_Cfg_Abrase_Click')
+def Btn_Cfg_HashBuster_Click():
+    print('home_support.Btn_Cfg_HashBuster_Click')
     
     file1 = tkFileDialog.askdirectory(title='Choose a folder')
     if file1 != None:
-        w.Txt_Cfg_Abrase.delete(0,END)
-        w.Txt_Cfg_Abrase.insert(0,file1)
+        w.Txt_Cfg_HashBuster.delete(0,END)
+        w.Txt_Cfg_HashBuster.insert(0,file1)
         
     
 
@@ -1421,10 +1421,10 @@ def Btn_Cfg_Wyd_Click():
         
     
     
-def Btn_Cfg_Update_Click(Txt_Cfg_Abrase,Txt_Cfg_Cewl,Txt_Cfg_Crunch,Txt_Cfg_Cupp,Txt_Cfg_Dymerge,Txt_Cfg_Hashcat,Txt_Cfg_John,Txt_Cfg_Len,Txt_Cfg_Pack,Txt_Cfg_Passtrust,Txt_Cfg_Pwdlyser,Txt_Cfg_Pipal,Txt_Cfg_Wyd):
+def Btn_Cfg_Update_Click(Txt_Cfg_HashBuster,Txt_Cfg_Cewl,Txt_Cfg_Crunch,Txt_Cfg_Cupp,Txt_Cfg_Dymerge,Txt_Cfg_Hashcat,Txt_Cfg_John,Txt_Cfg_Len,Txt_Cfg_Pack,Txt_Cfg_Passtrust,Txt_Cfg_Pwdlyser,Txt_Cfg_Pipal,Txt_Cfg_Wyd):
     print('home_support.Btn_Cfg_Update_Click')
     
-    d['path_abrase']=Txt_Cfg_Abrase
+    d['path_hashbuster']=Txt_Cfg_HashBuster
     d['path_cewl']=Txt_Cfg_Cewl
     d['path_crunch']=Txt_Cfg_Crunch
     d['path_cupp']=Txt_Cfg_Cupp
@@ -1529,6 +1529,19 @@ def Btn_Attack_BF_Del_Click():
     
     if os.path.isfile(potfile):
         os.remove(potfile)
+
+def Btn_Attack_Online_Run_Click(args):
+    print('home_support.Btn_Attack_Online_Run_Click')
+    
+    w.Btn_Attack_Online_Run.configure(state=DISABLED)
+    Tk.update(top_level)
+    
+    os.system("gnome-terminal -x ./hashbuster.sh "+d['path_hashbuster']+"/")
+    
+    #unlock after 1 min   
+    time.sleep(30)
+
+    w.Btn_Attack_Online_Run.configure(state=NORMAL)
 
 
 def Btn_Attack_Dic_Wd_Browse_Click():
@@ -1816,7 +1829,7 @@ def init(top, gui, *args, **kwargs):
         d['path_passtrust']='/home/pj/Downloads/passtrust-master'
         d['path_pipal']='/home/pj/Downloads/pipal-master'
         d['path_wyd']='~/Downloads/wyd-0.2'
-        d['path_abrase'] = '?'
+        d['path_hashbuster'] = '~/Downloads/Hash-Buster-master'
         d['path_pwdlyser']='?'
         
         d['path_dict']='/home/pj/Documents/Dictionaries'
@@ -2011,7 +2024,7 @@ def init(top, gui, *args, **kwargs):
     
     #load values
     #configure paths
-    w.Txt_Cfg_Abrase.insert(0,d['path_abrase'])
+    w.Txt_Cfg_HashBuster.insert(0,d['path_hashbuster'])
     w.Txt_Cfg_Cewl.insert(0,d['path_cewl'])
     w.Txt_Cfg_Crunch.insert(0,d['path_crunch'])
     w.Txt_Cfg_Cupp.insert(0,d['path_cupp'])
@@ -2227,7 +2240,7 @@ def destroy_window():
     #save settings
     
     #settings cfg
-    d['path_abrase']=w.Txt_Cfg_Abrase.get()
+    d['path_hashbuster']=w.Txt_Cfg_HashBuster.get()
     d['path_cewl']=w.Txt_Cfg_Cewl.get()
     d['path_crunch']=w.Txt_Cfg_Crunch.get()
     d['path_cupp']=w.Txt_Cfg_Cupp.get()
