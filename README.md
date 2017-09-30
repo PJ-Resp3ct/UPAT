@@ -52,7 +52,11 @@ UPAT has been developed in the context of the Master's thesis project while stud
 
 Feel free to contribute.
 
+-------
 
+Download a ready-to use VM for VMWare Player with UPAT and prerequisites installed in Ubuntu 16.04 here: https://drive.google.com/file/d/0B84EdDa7rqRyb3NDbGFiVTFpRVU/view?usp=sharing (6.5GB)
+
+-------
 An indicative roadmap for future improvements:
 
 -	A huge announcement reported in august 2017 was the release of the biggest passwords dictionary from Have I Been Pwned website, consisting of 306 million entries which could be added to the Wordlists repository and used to check instantly if a given password has been leaked online and thus exclude it from use.
