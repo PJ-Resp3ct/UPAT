@@ -667,6 +667,15 @@ def Btn_NewPass_Output_Copy():
     pyperclip.copy(w.Txt_NewPass_Output.get(0.0,END))
     
 
+def Btn_Pwned_Output_Delete():
+    print('home_support.Btn_Pwned_Output_Delete')
+    w.Txt_Pwned_Output.delete(0.0,END)
+    
+def Btn_Pwned_Output_Copy():
+    print('home_support.Btn_Pwned_Output_Copy')
+    import pyperclip
+    pyperclip.copy(w.Txt_Pwned_Output.get(0.0,END))
+    
 def Btn_Gen_Brute_Browse_Click():
     global w
     print('home_support.Btn_Gen_Brute_Browse_Click')
@@ -1290,7 +1299,48 @@ def Btn_NewPass_Click(Txt_NewPass_Len,Chk_NewPass_Specials):
     pyperclip.copy("test")
     
     w.Btn_NewPass_Run.configure(state=NORMAL)
+
+
+def Btn_Pwned_Click(Txt_Pwned_Pass):
+    print('home_support.Btn_Pwned_Click')
     
+    import urllib2
+    
+    
+    time_start=datetime.datetime.fromtimestamp(time.time()).strftime('%H:%M:%S')
+    w.Txt_Pwned_Output.insert(0.0,time_start+' | '+"Sending request to HaveIBeenPwned API for password '"+Txt_Pwned_Pass+"'"+'\n\n')
+    w.Btn_Pwned_Run.configure(state=DISABLED)
+    Tk.update(top_level)
+    
+    try:
+        opener = urllib2.build_opener()
+        opener.addheaders = [('User-Agent', 'UPAT')]
+        r=opener.open("https://haveibeenpwned.com/api/v2/pwnedpassword/"+Txt_Pwned_Pass)
+    
+        resp=str(r.getcode())
+        
+        print resp
+        
+    
+        time_end=datetime.datetime.fromtimestamp(time.time()).strftime('%H:%M:%S')
+        w.Txt_Pwned_Output.insert(0.0,time_end+' | '+"Got a response: "+resp+"\n")
+    
+        if resp=="200":
+            w.Txt_Pwned_Output.insert(0.0,"WARNING!! This password was leaked previously and should not be used anymore.\n")
+    
+    except urllib2.HTTPError, e:
+
+        time_end=datetime.datetime.fromtimestamp(time.time()).strftime('%H:%M:%S')
+        w.Txt_Pwned_Output.insert(0.0,time_end+' | '+"Got a response: "+str(e.code)+"\n")
+        
+        if e.code == 404:
+            w.Txt_Pwned_Output.insert(0.0,"This password is safe to use.\n") 
+        else:
+            print 'An error code was returned - %s.' % e.code
+
+    
+    w.Btn_Pwned_Run.configure(state=NORMAL)
+
 def Btn_Cfg_HashBuster_Click():
     print('home_support.Btn_Cfg_HashBuster_Click')
     

@@ -56,10 +56,14 @@ Feel free to contribute.
 
 Download a ready-to use VM for VMWare Player with UPAT and prerequisites installed in Ubuntu 16.04 here: https://drive.google.com/file/d/0B84EdDa7rqRyb3NDbGFiVTFpRVU/view?usp=sharing (6.5GB)
 
+Login with pj / root (yes that's not secure...)
+
+Launch a Terminal, cd Desktop, then run ./UPAT.sh
+
 -------
 An indicative roadmap for future improvements:
 
--	A huge announcement reported in august 2017 was the release of the biggest passwords dictionary from Have I Been Pwned website, consisting of 306 million entries which could be added to the Wordlists repository and used to check instantly if a given password has been leaked online and thus exclude it from use.
+-	[DONE 1/10/17] A huge announcement reported in august 2017 was the release of the biggest passwords dictionary from Have I Been Pwned website, consisting of 306 million entries which could be added to the Wordlists repository and used to check instantly if a given password has been leaked online and thus exclude it from use.
 
 -	[DONE 30/9/17] Integrate Hash Buster, a Python script released in June 2017 that takes as input an encrypted password and asks online services who basically host rainbow tables and known/leaked hashes for the matching plaintext. Ethical concerns however apply as the passwords would then be uploaded online on servers outside of our control.
 
@@ -70,3 +74,5 @@ An indicative roadmap for future improvements:
 -	The ability to run distributed attacks taking advantage of multiple computers processing units to optimize cracking time. A server/client tool exists named Hashtopussy and allows to run distributed Hashcat jobs.
 
 - a script to install automatically all pre-requisites would be nice.
+
+- port the tool to Python 3
