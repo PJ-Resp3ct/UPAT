@@ -309,11 +309,12 @@ def Btn_Ana_Masks_Run_Click(Txt_Ana_Masks_Path,Chk_Ana_Masks_Sort,Chk_Ana_Masks_
     w.Btn_Ana_Masks_Run.configure(state=DISABLED)
     Tk.update(top_level)
     
-    output = subprocess.check_output(cmd, shell=True,cwd=d['path_pack'])
+    #output = subprocess.check_output(cmd, shell=True,cwd=d['path_pack'])
+    output = subprocess.call(cmd, shell=True,cwd=d['path_pack'])
     
     time_end=datetime.datetime.fromtimestamp(time.time()).strftime('%H:%M:%S')
     
-    w.Txt_Ana_Masks_Output.insert(0.0,output)
+    #w.Txt_Ana_Masks_Output.insert(0.0,output)
     w.Txt_Ana_Masks_Output.insert(0.0,time_end+' | '+"Maskgen has finished.\n")
     
     w.Btn_Ana_Masks_Run.configure(state=NORMAL)
@@ -1579,6 +1580,11 @@ def Btn_Attack_BF_Del_Click():
     
     if os.path.isfile(potfile):
         os.remove(potfile)
+        
+    potfile=d['path_hashcat']+'/hashcat_out.txt'
+    
+    if os.path.isfile(potfile):
+        os.remove(potfile)
 
 def Btn_Attack_Online_Run_Click(args):
     print('home_support.Btn_Attack_Online_Run_Click')
@@ -1588,8 +1594,8 @@ def Btn_Attack_Online_Run_Click(args):
     
     os.system("gnome-terminal -x ./hashbuster.sh "+d['path_hashbuster']+"/")
     
-    #unlock after 1 min   
-    time.sleep(30)
+    #unlock after 10 secs   
+    time.sleep(10)
 
     w.Btn_Attack_Online_Run.configure(state=NORMAL)
 
@@ -1741,6 +1747,13 @@ def Btn_Attack_BF_Run_Click(Txt_Attack_BF_Pwd_Path,Sel_Attack_BF_Hash,Txt_Attack
     os.system('gnome-terminal -x '+cmd)
     time_end=datetime.datetime.fromtimestamp(time.time()).strftime('%H:%M:%S')
     print(time_end+' | '+"Hashcat has finished.\n")
+    
+    filename=d['path_hashcat']+"/hashcat_out.txt"
+    if os.path.exists(filename):
+        fp = open(filename, "r")
+        content = fp.read()
+        fp.close()
+        print(content)
     
     w.Btn_Attack_BF_Run.configure(state=NORMAL)
     
