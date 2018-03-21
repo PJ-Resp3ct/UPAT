@@ -14,9 +14,10 @@ Pre-requisites:
 - Crunch >= 3.6
 - DyMerge >= 0.2
 - Hash Buster >= 1.0
-- Hashcat >= 3.50
-- Hashcat-Utils >= 1.7
+- Hashcat >= 4.1.0
+- Hashcat-Utils >= 1.8
 - John the Ripper Bleeding Jumbo Edition
+- Mentalist >= 1.0
 - PACK >= 0.0.4
 - PassTrust >= 2.1
 - Pipal >= 3.1
@@ -40,6 +41,7 @@ Tested environments:
 - MySpace leak: https://github.com/danielmiessler/SecLists/blob/master/Passwords/myspace.txt
 - OpenWall all: https://github.com/danielmiessler/SecLists/blob/master/Passwords/openwall_all.txt
 - RockYou leak: https://github.com/danielmiessler/SecLists/blob/master/Passwords/rockyou.txt.tar.gz
+- Top 1mln common passwords: https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt
 - Cupp 3 foreign dictionaries
 
 Now you are good to go.
@@ -54,7 +56,7 @@ Feel free to contribute.
 
 -------
 
-Download a ready-to use VM for VMWare Player with UPAT and prerequisites installed in Ubuntu 16.04 here: https://drive.google.com/file/d/0B84EdDa7rqRyb3NDbGFiVTFpRVU/view?usp=sharing (6.5GB)
+Download a ready-to use VM for VMWare Player with UPAT and prerequisites installed in Ubuntu 16.04 here: https://drive.google.com/open?id=1Oqn6LXLQQ1KIe3ASKGF9h7T7SKiec-ki (7.7GB)
 
 Login with pj / root (yes that's not secure...)
 
