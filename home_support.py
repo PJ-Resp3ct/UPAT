@@ -1376,20 +1376,29 @@ def Btn_Pwned_Click(Txt_Pwned_Pass):
     Tk.update(top_level)
     
     try:
+        sha1 = hashlib.sha1(Txt_Pwned_Pass.encode()).hexdigest()
+        sha1_prefix = sha1[:5]
+        sha1_suffix = sha1[5:]
+
         opener = urllib2.build_opener()
         opener.addheaders = [('User-Agent', 'UPAT')]
-        r=opener.open("https://haveibeenpwned.com/api/v2/pwnedpassword/"+Txt_Pwned_Pass)
-    
+        r=opener.open("https://api.pwnedpasswords.com/range/"+sha1_prefix)
+
         resp=str(r.getcode())
-        
+
         print resp
-        
-    
+
+
         time_end=datetime.datetime.fromtimestamp(time.time()).strftime('%H:%M:%S')
         w.Txt_Pwned_Output.insert(0.0,time_end+' | '+"Got a response: "+resp+"\n")
-    
+
         if resp=="200":
-            w.Txt_Pwned_Output.insert(0.0,"WARNING!! This password was leaked previously and should not be used anymore.\n")
+            response_content = r.read()
+            if sha1_suffix in response_content:
+                # Password is pwned
+                w.Txt_Pwned_Output.insert(0.0,"WARNING!! This password was leaked previously and should not be used anymore.\n")
+            else:
+                w.Txt_Pwned_Output.insert(0.0,"This password is safe to use.\n")
     
     except urllib2.HTTPError, e:
 
